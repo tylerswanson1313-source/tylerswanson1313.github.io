@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyler Swanson | Community Sustainability & Agrivoltaics Researcher</title>
+    <style>
+        :root {
+            --primary: #2c5e43; /* Deep environmental green */
+            --secondary: #e6af2e; /* Solar gold */
+            --dark: #222222;
+            --light: #f4f6f4;
+            --white: #ffffff;
+            --text: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .main-layout {
+                grid-template-columns: 300px 1fr;
+            }
+        }
+
+        /* Sidebar Profile Card */
+        .profile-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            height: fit-content;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #1e422e;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Content Area */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        section {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 5px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        @media (min-width: 600px) {
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .value-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .value-item h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .pub-card {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary);
+            margin-top: 15px;
+        }
+
+        .pub-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .pub-meta {
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Tyler Swanson</h1>
+            <p>PhD Student in Community Sustainability & Environmental Science & Policy</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-layout">
+            
+            <aside class="profile-card">
+                <img src="headshot.jpg" alt="Tyler Swanson Headshot" class="profile-img">
+                <h3>Connect With Me</h3>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/tylerswanson15/" target="_blank" class="btn btn-primary">LinkedIn</a>
+                    <a href="#" target="_blank" class="btn btn-outline">Google Scholar</a>
+                    <a href="#" target="_blank" class="btn btn-outline">ResearchGate</a>
+                </div>
+            </aside>
+
+            <main class="content-area">
+                
+                <section id="mission">
+                    <h2>Mission Statement</h2>
+                    <p>
+                        Driven by the urgent need for resilient climate solutions, my work focuses on the intersection of community sustainability, agricultural systems, and environmental policy. By evaluating emerging frameworks like agrivoltaics, I strive to generate evidence-based research that empowers local communities, balances land-use priorities, and fosters equitable renewable energy transitions.
+                    </p>
+                </section>
+
+                <section id="values">
+                    <h2>Key Values</h2>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <h4>Community-Centered Research</h4>
+                            <p>Prioritizing local voices, landscape ideologies, and stakeholder experiences to guide top-down policy design.</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Interdisciplinary Collaboration</h4>
+                            <p>Bridging environmental economics, human geography, and agricultural law to tackle complex climate challenges.</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Environmental Stewardship</h4>
+                            <p>Advancing dual-use solar and land strategies that protect rural ecosystems while scaling renewable energy capacities.</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Actionable Policy Analysis</h4>
+                            <p>Translating academic data into practical legal frameworks, fact sheets, and tools for real-world governance.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="publication">
+                    <h2>Featured Recent Publication</h2>
+                    <div class="pub-card">
+                        <div class="pub-title">
+                            Exploring the effects of policy on stakeholder adoption and deployment of agrivoltaics: A case study of Massachusetts
+                        </div>
+                        <div class="pub-meta">
+                            Pascaris, A. S., Swanson, T., Seay-Fleming, C., Gerlak, A. K., McCall, J., Barron-Gafford, G. A., & Macknick, J. (2026). <strong>Energy Policy</strong>, 208, 114921.
+                        </div>
+                        <a href="https://doi.org/10.1016/j.enpol.2025.114921" target="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 6px 12px;">View Publication</a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Tyler Swanson. Hosted freely on GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
