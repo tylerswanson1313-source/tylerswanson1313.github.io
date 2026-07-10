@@ -6,15 +6,15 @@
     <title>Tyler Swanson | Community Sustainability & Agrivoltaics Researcher</title>
  
     <style>
-       :root {
-    --primary: #1E422E;      /* Deep Crop Green */
-    --secondary: #C48200;    /* Deep Solar Amber */
-    --infrastructure: #3B6285; /* Grid Blue (Your 5th color) */
-    --dark: #22252A;         /* Slate Tech Carbon */
-    --light: #F7F9F6;        /* Soft Clover Cream */
-    --white: #ffffff;
-    --text: #22252A;
-}
+        :root {
+            --primary: #1E422E;      /* Deep Crop Green */
+            --secondary: #C48200;    /* Deep Solar Amber */
+            --infrastructure: #3B6285; /* Grid Blue (Your 5th color) */
+            --dark: #22252A;         /* Slate Tech Carbon */
+            --light: #F7F9F6;        /* Soft Clover Cream */
+            --white: #ffffff;
+            --text: #22252A;
+        }
 
         * {
             box-sizing: border-box;
@@ -35,60 +35,74 @@
             padding: 40px 20px;
         }
 
-/* ==========================================
-   HEADER & LOGO STYLING
-   ========================================== */
-header {
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 35px 0;
-}
+        /* ==========================================
+           HEADER & LOGO STYLING
+           ========================================== */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 35px 0;
+        }
 
-/* Flexbox wrapper to align elements */
-.header-flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 0 20px;
-}
+        /* Flexbox wrapper to align elements */
+        .header-flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 0 20px;
+        }
 
-/* Text Container */
-.header-text {
-    text-align: center;
-}
+        /* Text Container */
+        .header-text {
+            text-align: center;
+        }
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
 
-header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
 
-/* Personal Logo Constraints */
-.header-logo {
-    height: 70px; /* Adjust this value to make your logo larger or smaller */
-    width: auto;  /* Maintains correct aspect ratio automatically */
-    object-fit: contain;
-}
+        /* Personal Logo Constraints */
+        .header-logo {
+            height: 70px; /* Adjust this value to make your logo larger or smaller */
+            width: auto;  /* Maintains correct aspect ratio automatically */
+            object-fit: contain;
+        }
 
-/* Desktop Alignment (Turns on at screens wider than 768px) */
-@media (min-width: 768px) {
-    .header-flex {
-        flex-direction: row;
-        text-align: left;
-    }
-    
-    .header-text {
-        text-align: left;
-    }
-}
+        /* Desktop Alignment (Turns on at screens wider than 768px) */
+        @media (min-width: 768px) {
+            .header-flex {
+                flex-direction: row;
+                text-align: left;
+            }
+            
+            .header-text {
+                text-align: left;
+            }
+        }
 
+        /* ==========================================
+           MAIN CONTENT & SIDEBAR GRID LAYOUT
+           ========================================== */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 10px;
+        }
 
+        @media (min-width: 768px) {
+            .main-layout {
+                grid-template-columns: 300px 1fr; /* Lock sidebar to 300px, main content fills rest */
+            }
+        }
 
         /* Sidebar Profile Card */
         .profile-card {
@@ -144,15 +158,16 @@ header p {
             background-color: var(--primary);
             color: var(--white);
         }
+
         .btn-cv {
             background-color: var(--infrastructure); /* Grid Blue */
             color: var(--white);
             margin-top: 10px; /* Separates it slightly from social links */
         }
 
-.btn-cv:hover {
-    background-color: #2b4965; /* A slightly darker shade of blue for the hover effect */
-}
+        .btn-cv:hover {
+            background-color: #2b4965; /* A slightly darker shade of blue for the hover effect */
+        }
 
         /* Content Area */
         .content-area {
@@ -221,6 +236,17 @@ header p {
             color: #555;
         }
 
+        .pub-text {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ccc;
+        }
+
+        .pub-text h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
         footer {
             text-align: center;
             margin-top: 60px;
@@ -233,13 +259,13 @@ header p {
 <body>
 
     <header>
-        <div class="container">
-            <h1>Tyler Swanson</h1>
-            <p>PhD Student in Community Sustainability & Environmental Science & Policy</p>
+        <div class="container header-flex">
+            <div class="header-text">
+                <h1>Tyler Swanson</h1>
+                <p>PhD Student in Community Sustainability & Environmental Science & Policy</p>
+            </div>
+            <img src="IconLogo.png" alt="Tyler Swanson Logo" class="header-logo">
         </div>
-        <img src="IconLogo.png" alt="Tyler Swanson Logo" class="header-logo">
-            
-        </div> <!-- Closes .container (The header's inner wrapper) -->
     </header>
 
     <div class="container">
@@ -252,7 +278,7 @@ header p {
                     <a href="https://www.linkedin.com/in/tylerswanson15/" target="_blank" class="btn btn-primary">LinkedIn</a>
                     <a href="https://scholar.google.com/citations?user=B_Tk-uUAAAAJ&hl=en&oi=ao" target="_blank" class="btn btn-outline">Google Scholar</a>
                     <a href="https://www.researchgate.net/profile/Tyler-Swanson-3?ev=hdr_xprf" target="_blank" class="btn btn-outline">ResearchGate</a>
-                    <!-- NEW: Download CV Button -->
+                    <!-- Download CV Button -->
                     <a href="Swanson_CV_2026.pdf" download="Swanson_CV_JULY2026.pdf" class="btn btn-cv">Download CV</a>
                 </div>
             </aside>
@@ -285,7 +311,7 @@ header p {
                             <h4>Midwest Nice</h4>
                             <p>I was born and raised to always show kindness, hospitality, and a willingness to help others, and I bring these attitudes to my work.</p>
                         </div>
-                             <div class="value-item">
+                        <div class="value-item">
                             <h4>Quality</h4>
                             <p>I strive to ensure each of my research outputs is backed by sound theoretical and methodological frameworks.</p>
                         </div>
@@ -302,11 +328,12 @@ header p {
                             Pascaris, A. S., Swanson, T., Seay-Fleming, C., Gerlak, A. K., McCall, J., Barron-Gafford, G. A., & Macknick, J. (2026). <strong>Energy Policy</strong>, 208, 114921.
                         </div>
                         <a href="https://doi.org/10.1016/j.enpol.2025.114921" target="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 6px 12px;">View Publication</a>
-                    </div>
-                         <div class="pub-text">
+                        
+                        <div class="pub-text">
                             <h4>Abstract</h4>
                             <p>As efforts to develop solar energy increase across the US, so does local opposition in rural communities where residents view solar energy as incompatible with local landscapes and identities. Recognizing the growing public opposition to solar energy resulting from landscape conflicts, many scholars have recommended the adoption of agrivoltaics. This co-utilization practice allows for agricultural and solar energy production to take place on the same plot of land as a solution to improve public support for solar energy development. This study uses landscape ideologies of the Western United States to examine how solar energy fits into changing Western landscapes and investigates whether agrivoltaics can be used as a tool to better align solar energy development with local landscapes. The study focuses on Pinal County, Arizona, a historically rural agricultural community simultaneously experiencing exurbanization, a decline in agricultural production, and an increase in proposed utility-scale solar energy projects. Using semi-structured interviews with farmers, government officials, and local business interests in combination with participant observation of local meetings about solar energy development, we find that a divergence in landscape ideologies between farmers and government officials in Pinal County significantly shapes opposition to solar energy. Agrivoltaics is perceived positively by government officials as a solution to public opposition toward solar energy development, however, farmers’ insufficient knowledge about agrivoltaics and a lack of current interest by solar developers to engage in agrivoltaic practices present critical barriers to the use of agrivoltaics as a land-use solution in Pinal County. We conclude with recommendations for increasing farmer participation in agrivoltaic policy and project development.</p>
                         </div>
+                    </div>
                 </section>
 
             </main>
