@@ -37,13 +37,16 @@
             padding: 40px 20px;
         }
 
-        header {
-           background-color: var(--primary);
+/* ==========================================
+   HEADER & LOGO STYLING
+   ========================================== */
+header {
+    background-color: var(--primary);
     color: var(--white);
-    padding: 30px 0;
+    padding: 35px 0;
 }
 
-/* Flexbox layout to push text left and logo right */
+/* Flexbox wrapper to align elements */
 .header-flex {
     display: flex;
     flex-direction: column;
@@ -53,18 +56,29 @@
     padding: 0 20px;
 }
 
+/* Text Container */
 .header-text {
     text-align: center;
 }
 
-/* Base Logo Dimensions */
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Personal Logo Constraints */
 .header-logo {
-    height: 70px; /* Adjust height to scale your logo beautifully */
-    width: auto;  /* Maintains aspect ratio */
+    height: 70px; /* Adjust this value to make your logo larger or smaller */
+    width: auto;  /* Maintains correct aspect ratio automatically */
     object-fit: contain;
 }
 
-/* Desktop Alignment: Side-by-side positioning */
+/* Desktop Alignment (Turns on at screens wider than 768px) */
 @media (min-width: 768px) {
     .header-flex {
         flex-direction: row;
@@ -74,7 +88,9 @@
     .header-text {
         text-align: left;
     }
-        }
+}
+
+
 
         /* Sidebar Profile Card */
         .profile-card {
