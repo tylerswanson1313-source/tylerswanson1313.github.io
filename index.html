@@ -38,17 +38,43 @@
         }
 
         header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 60px 0;
-            text-align: center;
-            border-bottom: 5px solid var(--secondary);
-        }
+           background-color: var(--primary);
+    color: var(--white);
+    padding: 30px 0;
+}
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+/* Flexbox layout to push text left and logo right */
+.header-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.header-text {
+    text-align: center;
+}
+
+/* Base Logo Dimensions */
+.header-logo {
+    height: 70px; /* Adjust height to scale your logo beautifully */
+    width: auto;  /* Maintains aspect ratio */
+    object-fit: contain;
+}
+
+/* Desktop Alignment: Side-by-side positioning */
+@media (min-width: 768px) {
+    .header-flex {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .header-text {
+        text-align: left;
+    }
+
 
         header p {
             font-size: 1.2rem;
