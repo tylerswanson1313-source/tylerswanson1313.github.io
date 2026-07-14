@@ -5,40 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications | Tyler Swanson</title>
     <style>
-  :root {
-    --primary: #1E422E;      /* Deep Crop Green */
-    --secondary: #C48200;    /* Deep Solar Amber */
-    --infrastructure: #3B6285; /* Grid Blue (Your 5th color) */
-    --dark: #22252A;         /* Slate Tech Carbon */
-    --light: #F7F9F6;        /* Soft Clover Cream */
-    --white: #ffffff;
-    --text: #22252A;
-}
+        :root {
+            --primary: #1E422E;      /* Deep Crop Green */
+            --secondary: #C48200;    /* Deep Solar Amber */
+            --infrastructure: #3B6285; /* Grid Blue */
+            --dark: #22252A;         /* Slate Tech Carbon */
+            --light: #F7F9F6;        /* Soft Clover Cream */
+            --white: #ffffff;
+            --text: #22252A;
+        }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text);
             background-color: var(--light);
             line-height: 1.6;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
+        /* ==========================================
+           HEADER & NAVIGATION STYLING
+           ========================================== */
         header {
             background-color: var(--primary);
             color: var(--white);
-            padding: 30px 0 15px 0;
+            padding: 35px 0;
             text-align: center;
         }
 
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
         nav {
-            background-color: #1e422e;
+            background-color: #163021;
             text-align: center;
             padding: 12px 0;
             border-bottom: 5px solid var(--secondary);
@@ -52,15 +64,46 @@
             text-decoration: none;
             margin: 0 15px;
             font-weight: bold;
+            font-size: 1.05rem;
+            transition: color 0.2s ease;
         }
 
-        nav a:hover, nav a.active { color: var(--secondary); }
+        nav a:hover, nav a.active {
+            color: var(--secondary);
+        }
 
+        /* ==========================================
+           SEARCH BAR STYLING
+           ========================================== */
+        .search-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            outline: none;
+            transition: box-shadow 0.2s ease;
+            background-color: var(--white);
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(30, 66, 46, 0.2);
+        }
+
+        /* ==========================================
+           PUBLICATIONS LAYOUT
+           ========================================== */
         h2 {
             color: var(--primary);
-            margin: 30px 0 15px 0;
+            margin: 40px 0 20px 0;
             border-bottom: 2px solid #ccc;
-            padding-bottom: 5px;
+            padding-bottom: 8px;
         }
 
         .pub-list {
@@ -69,32 +112,65 @@
             gap: 20px;
         }
 
-        .pub-item {
+        .pub-card {
             background: var(--white);
-            padding: 20px;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--primary);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .pub-item.other-pub {
-            border-left-color: var(--secondary);
+        .pub-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
         }
 
-        .pub-text {
+        /* Left border indicator colors */
+        .peer-reviewed {
+            border-left: 5px solid var(--primary);
+        }
+
+        .non-peer-reviewed {
+            border-left: 5px solid var(--infrastructure);
+        }
+
+        .citation {
             font-size: 1.05rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            color: var(--text);
         }
 
-        .doi-link {
+        /* Action Buttons */
+        .btn {
             display: inline-block;
-            color: var(--primary);
+            padding: 8px 16px;
             text-decoration: none;
+            border-radius: 5px;
             font-weight: bold;
             font-size: 0.9rem;
+            transition: background 0.2s ease;
         }
 
-        .doi-link:hover { text-decoration: underline; }
+        .btn-visit {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-visit:hover {
+            background-color: #9c6800; /* Darker amber */
+        }
+
+        /* Hidden class for search filtering */
+        .hidden {
+            display: none !important;
+        }
+
+        .no-results {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin: 40px 0;
+        }
 
         footer {
             text-align: center;
@@ -121,94 +197,151 @@
 
     <div class="container">
         
-        <h2>Peer-Reviewed Publications</h2>
-        <div class="pub-list">
-            
-            <div class="pub-item">
-                <p class="pub-text">Pascaris, A. S., <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., McCall, J., Barron-Gafford, G. A., & Macknick, J. (2026). Exploring the effects of policy on stakeholder adoption and deployment of agrivoltaics: A case study of Massachusetts. <em>Energy Policy</em>, 208, 114921.</p>
-                <a href="https://doi.org/10.1016/j.enpol.2025.114921" target="_blank" class="doi-link">View Publication &rarr;</a>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text"><strong>Swanson, T.</strong>, Gerlak, A., Barron-Gafford, G., & Bellante, L. (2025). Developing crop-based agrivoltaic systems: A case study of Jack's Solar Garden. <em>Journal of Agriculture, Food Systems, and Community Development</em>, 1-18.</p>
-                <a href="https://doi.org/10.5304/jafscd.2025.151.010" target="_blank" class="doi-link">View Publication &rarr;</a>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text">Macy, A., <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., & Barron-Gafford, G. A. (2025). Designing for dual-use solar: An examination of the agrivoltaic policy landscape in the United States. <em>Energy Policy</em>, 205, 114682.</p>
-                <a href="https://doi.org/10.1016/j.enpol.2025.114682" target="_blank" class="doi-link">View Publication &rarr;</a>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text">Seay-Fleming, C., <strong>Swanson, T.</strong>, Gerlak, A. K., Pavao-Zuckerman, M. A., Andrews, H., Moore, K., & Barron-Gafford, G. A. (2025). Cultivating engagement: Public participation in agrivoltaics planning and design. <em>Energy Research & Social Science</em>, 127, 104273.</p>
-                <a href="https://doi.org/10.1016/j.erss.2025.104273" target="_blank" class="doi-link">View Publication &rarr;</a>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text">Seay-Fleming, C., <strong>Swanson, T.</strong>, & Gerlak, A. (2025). For what and for whom? A political ecology of agrivoltaics in the Southwestern United States. <em>Sustainability Science</em>.</p>
-                <a href="https://doi.org/10.1007/s11625-025-01653-3" target="_blank" class="doi-link">View Publication &rarr;</a>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text"><strong>Swanson, Tyler</strong>, Seay-Fleming, Carrie, Gerlak, Andrea K., Barron-Gafford, Greg A. "Enough is enough, we like our farms": The role of landscape ideology in shaping perceptions of solar energy and agrivoltaics in the rural American Southwest. <em>Journal of Rural Studies</em>, 114. February, 2025.</p>
-                <a href="https://doi.org/10.1016/j.jrurstud.2025.103572" target="_blank" class="doi-link">View Publication &rarr;</a>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text">Karhoff, Quin E., Endres, A. Bryan, Guarino, Jessica L. & <strong>Swanson, Tyler J.</strong> Renewable Energy in Illinois: The Agrivoltaics Contribution. <em>Southern Illinois University Law Review</em>, 48. Summer 2024.</p>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text">Endres, R., Endres, A. B., Guarino, J., <strong>Swanson, T.</strong>, & Zou, S. (Sharon). (2024). Agritourism liability: why definition matters from a legal and risk management perspective. <em>Current Issues in Tourism</em>, 1-7.</p>
-                <a href="https://doi.org/10.1080/13683500.2024.2378971" target="_blank" class="doi-link">View Publication &rarr;</a>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text">Haemmerli, Hannah L, Gerlak, Andrea K, & <strong>Swanson, Tyler</strong>. Reimagining hydropower in the United States. <em>WIREs Water</em>, May 29, 2024.</p>
-                <a href="https://doi.org/10.1002/wat2.1735" target="_blank" class="doi-link">View Publication &rarr;</a>
-            </div>
-
-            <div class="pub-item">
-                <p class="pub-text">Guarino, J., & <strong>Swanson, T.</strong> Emerging Agrivoltaic Regulatory Systems, A Review of Solar Grazing. <em>Chicago-Kent Journal of Environmental and Energy Law</em>, 12. November 2022.</p>
-            </div>
+        <!-- Search Input -->
+        <div class="search-container">
+            <input type="text" id="pubSearch" class="search-input" placeholder="Search by title, author, year, or keyword...">
         </div>
 
-        <h2>Other Publications</h2>
-        <div class="pub-list">
-            
-            <div class="pub-item other-pub">
-                <p class="pub-text"><strong>Swanson, T.</strong> & Gerlak, A. "As A New Farm Bill Nears, Congress Should Consider Agrivoltaics." <em>Energy Central</em>. January 4, 2024.</p>
-                <a href="https://energycentral.com/c/ec/new-farm-bill-nears-congress-should-consider-agrivoltaics" target="_blank" class="doi-link">Read Article &rarr;</a>
-            </div>
+        <!-- No Results Message -->
+        <div id="noResults" class="no-results hidden">No publications match your search criteria.</div>
 
-            <div class="pub-item other-pub">
-                <p class="pub-text"><strong>Swanson, T.</strong>, Q. Karhoff, J. Guarino, & B. Endres. "Fact Sheet: The Economics of Solar Grazing." <em>AgriSolar Clearinghouse</em>. July 24, 2023.</p>
-                <a href="https://www.agrisolarclearinghouse.org/fact-sheet-the-economics-of-solar-grazing/" target="_blank" class="doi-link">Read Fact Sheet &rarr;</a>
-            </div>
+        <!-- SECTION 1: Peer-Reviewed Publications -->
+        <section id="peerReviewedSection">
+            <h2>Peer-Reviewed Publications</h2>
+            <div class="pub-list">
+                
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        Pascaris, A. S., <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., McCall, J., Barron-Gafford, G. A., & Macknick, J. (2026). Exploring the effects of policy on stakeholder adoption and deployment of agrivoltaics: A case study of Massachusetts. <em>Energy Policy</em>, 208, 114921.
+                    </p>
+                    <a href="https://doi.org/10.1016/j.enpol.2025.114921" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                </div>
 
-            <div class="pub-item other-pub">
-                <p class="pub-text"><strong>Swanson, T.</strong> "The Rise of Agrivoltaics." <em>Q Magazine</em>, (5):2. February 23, 2023.</p>
-                <a href="https://q.sustainability.illinois.edu/the-rise-of-agrivoltaics/" target="_blank" class="doi-link">Read Article &rarr;</a>
-            </div>
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        <strong>Swanson, T.</strong>, Gerlak, A., Barron-Gafford, G., & Bellante, L. (2025). Developing crop-based agrivoltaic systems: A case study of Jack's Solar Garden. <em>Journal of Agriculture, Food Systems, and Community Development</em>, 1-18.
+                    </p>
+                    <a href="https://doi.org/10.5304/jafscd.2025.151.010" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                </div>
 
-            <div class="pub-item other-pub">
-                <p class="pub-text">Guarino, J. & <strong>Swanson, T.</strong> "Agrivoltaics in Illinois: A Regulatory and Policy Guide." <em>AgriSolar Clearinghouse</em>. February 1, 2023.</p>
-                <a href="https://www.agrisolarclearinghouse.org/the-illinois-agrivoltaics-regulatory-and-policy-guide-analyzes-state-and-local-laws/" target="_blank" class="doi-link">Read Guide &rarr;</a>
-            </div>
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        Macy, A., <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., & Barron-Gafford, G. A. (2025). Designing for dual-use solar: An examination of the agrivoltaic policy landscape in the United States. <em>Energy Policy</em>, 205, 114682.
+                    </p>
+                    <a href="https://doi.org/10.1016/j.enpol.2025.114682" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                </div>
 
-            <div class="pub-item other-pub">
-                <p class="pub-text"><strong>Swanson, T.</strong> "Crypto's Dark Secret." <em>Q Magazine</em>, (4):2. February 23, 2022.</p>
-                <a href="https://q.sustainability.illinois.edu/cryptos-dark-secret/" target="_blank" class="doi-link">Read Article &rarr;</a>
-            </div>
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        Seay-Fleming, C., <strong>Swanson, T.</strong>, Gerlak, A. K., Pavao-Zuckerman, M. A., Andrews, H., Moore, K., & Barron-Gafford, G. A. (2025). Cultivating engagement: Public participation in agrivoltaics planning and design. <em>Energy Research & Social Science</em>, 127, 104273.
+                    </p>
+                    <a href="https://doi.org/10.1016/j.erss.2025.104273" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                </div>
 
-            <div class="pub-item other-pub">
-                <p class="pub-text">Guarino, J., R. Endres, <strong>T. Swanson</strong> and B. Endres. "Defining the Bounds of Booming Agritourism." <em>farmdoc daily</em> (12):19, Department of Agricultural and Consumer Economics, University of Illinois at Urbana-Champaign, February 14, 2022.</p>
-            </div>
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        Seay-Fleming, C., <strong>Swanson, T.</strong>, & Gerlak, A. (2025). For what and for whom? A political ecology of agrivoltaics in the Southwestern United States. <em>Sustainability Science</em>.
+                    </p>
+                    <a href="https://doi.org/10.1007/s11625-025-01653-3" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                </div>
 
-            <div class="pub-item other-pub">
-                <p class="pub-text">Guarino, J., R. Endres, <strong>T. Swanson</strong> and B. Endres. "It's Pumpkin Patch Season and Agritourism is Booming-But What Exactly is Agritourism?." <em>farmdoc daily</em> (11):152, Department of Agricultural and Consumer Economics, University of Illinois at Urbana-Champaign, November 4, 2021.</p>
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., & Barron-Gafford, G. A. (2025). "Enough is enough, we like our farms": The role of landscape ideology in shaping perceptions of solar energy and agrivoltaics in the rural American Southwest. <em>Journal of Rural Studies</em>, 114, 103572.
+                    </p>
+                    <a href="https://doi.org/10.1016/j.jrurstud.2025.103572" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                </div>
+
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        Karhoff, Q. E., Endres, A. B., Guarino, J. L., & <strong>Swanson, T. J.</strong> (2024). Renewable energy in Illinois: The agrivoltaics contribution. <em>Southern Illinois University Law Review</em>, 48.
+                    </p>
+                    <!-- No link provided in CV; visitors can find via general search -->
+                    <span style="font-size: 0.9rem; color: #777; font-style: italic;">SIU Law Review Edition</span>
+                </div>
+
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        Endres, R., Endres, A. B., Guarino, J., <strong>Swanson, T.</strong>, & Zou, S. (2024). Agritourism liability: Why definition matters from a legal and risk management perspective. <em>Current Issues in Tourism</em>, 1-7.
+                    </p>
+                    <a href="https://doi.org/10.1080/13683500.2024.2378971" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                </div>
+
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        Haemmerli, H. L., Gerlak, A. K., & <strong>Swanson, T.</strong> (2024). Reimagining hydropower in the United States. <em>WIREs Water</em>, 11(5), e1735.
+                    </p>
+                    <a href="https://doi.org/10.1002/wat2.1735" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                </div>
+
+                <div class="pub-card peer-reviewed">
+                    <p class="citation">
+                        Guarino, J., & <strong>Swanson, T.</strong> (2022). Emerging agrivoltaic regulatory systems, a review of solar grazing. <em>Chicago-Kent Journal of Environmental and Energy Law</em>, 12.
+                    </p>
+                    <!-- Managed without explicit URL in CV -->
+                    <span style="font-size: 0.9rem; color: #777; font-style: italic;">CK Journal of Env & Energy Law</span>
+                </div>
+
             </div>
-        </div>
+        </section>
+
+        <!-- SECTION 2: Non-Peer-Reviewed Publications -->
+        <section id="nonPeerReviewedSection">
+            <h2>Non-Peer-Reviewed Publications</h2>
+            <div class="pub-list">
+
+                <div class="pub-card non-peer-reviewed">
+                    <p class="citation">
+                        <strong>Swanson, T.</strong>, & Gerlak, A. (2024, January 4). As a new farm bill nears, Congress should consider agrivoltaics. <em>Energy Central</em>.
+                    </p>
+                    <a href="https://energycentral.com/c/ec/new-farm-bill-nears-congress-should-consider-agrivoltaics" target="_blank" class="btn btn-visit">Read Article &rarr;</a>
+                </div>
+
+                <div class="pub-card non-peer-reviewed">
+                    <p class="citation">
+                        <strong>Swanson, T.</strong>, Karhoff, Q., Guarino, J., & Endres, B. (2023, July 24). Fact sheet: The economics of solar grazing. <em>AgriSolar Clearinghouse</em>.
+                    </p>
+                    <a href="https://www.agrisolarclearinghouse.org/fact-sheet-the-economics-of-solar-grazing/" target="_blank" class="btn btn-visit">Read Fact Sheet &rarr;</a>
+                </div>
+
+                <div class="pub-card non-peer-reviewed">
+                    <p class="citation">
+                        <strong>Swanson, T.</strong> (2023, February 23). The rise of agrivoltaics. <em>Q Magazine</em>, 5(2).
+                    </p>
+                    <a href="https://q.sustainability.illinois.edu/the-rise-of-agrivoltaics/" target="_blank" class="btn btn-visit">Read Article &rarr;</a>
+                </div>
+
+                <div class="pub-card non-peer-reviewed">
+                    <p class="citation">
+                        Guarino, J., & <strong>Swanson, T.</strong> (2023, February 1). Agrivoltaics in Illinois: A regulatory and policy guide. <em>AgriSolar Clearinghouse</em>.
+                    </p>
+                    <a href="https://www.agrisolarclearinghouse.org/the-illinois-agrivoltaics-regulatory-and-policy-guide-analyzes-state-and-local-laws/" target="_blank" class="btn btn-visit">Read Guide &rarr;</a>
+                </div>
+
+                <div class="pub-card non-peer-reviewed">
+                    <p class="citation">
+                        <strong>Swanson, T.</strong> (2022, February 23). Crypto's dark secret. <em>Q Magazine</em>, 4(2).
+                    </p>
+                    <a href="https://q.sustainability.illinois.edu/cryptos-dark-secret/" target="_blank" class="btn btn-visit">Read Article &rarr;</a>
+                </div>
+
+                <div class="pub-card non-peer-reviewed">
+                    <p class="citation">
+                        Guarino, J., Endres, R., <strong>Swanson, T.</strong>, & Endres, B. (2022, February 14). Defining the bounds of booming agritourism. <em>farmdoc daily</em>, 12(19).
+                    </p>
+                    <!-- farmdoc daily entry -->
+                    <span style="font-size: 0.9rem; color: #777; font-style: italic;">University of Illinois UIUC</span>
+                </div>
+
+                <div class="pub-card non-peer-reviewed">
+                    <p class="citation">
+                        Guarino, J., Endres, R., <strong>Swanson, T.</strong>, & Endres, B. (2021, November 4). It's pumpkin patch season and agritourism is booming—but what exactly is agritourism? <em>farmdoc daily</em>, 11(152).
+                    </p>
+                    <span style="font-size: 0.9rem; color: #777; font-style: italic;">University of Illinois UIUC</span>
+                </div>
+
+            </div>
+        </section>
 
     </div>
 
@@ -216,5 +349,55 @@
         <p>&copy; 2026 Tyler Swanson. Hosted freely on GitHub Pages.</p>
     </footer>
 
+    <!-- ==========================================
+         JAVASCRIPT SEARCH FILTER
+         ========================================== -->
+    <script>
+        const searchInput = document.getElementById('pubSearch');
+        const pubCards = document.querySelectorAll('.pub-card');
+        const noResults = document.getElementById('noResults');
+        const peerSection = document.getElementById('peerReviewedSection');
+        const nonPeerSection = document.getElementById('nonPeerReviewedSection');
+
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            let visiblePeerCount = 0;
+            let visibleNonPeerCount = 0;
+
+            pubCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.classList.remove('hidden');
+                    if (card.classList.contains('peer-reviewed')) {
+                        visiblePeerCount++;
+                    } else {
+                        visibleNonPeerCount++;
+                    }
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Toggle category headers based on visibility
+            if (visiblePeerCount === 0) {
+                peerSection.classList.add('hidden');
+            } else {
+                peerSection.classList.remove('hidden');
+            }
+
+            if (visibleNonPeerCount === 0) {
+                nonPeerSection.classList.add('hidden');
+            } else {
+                nonPeerSection.classList.remove('hidden');
+            }
+
+            // Show 'No Results' message if everything is hidden
+            if (visiblePeerCount === 0 && visibleNonPeerCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
