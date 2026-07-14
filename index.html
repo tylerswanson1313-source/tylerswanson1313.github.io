@@ -88,6 +88,32 @@
             }
         }
 
+/* ==========================================
+   NAVIGATION BAR STYLING
+   ========================================== */
+nav {
+    background-color: #163021; /* A slightly darker forest green */
+    text-align: center;
+    padding: 12px 0;
+    border-bottom: 5px solid var(--secondary); /* Your Deep Solar Amber */
+    position: sticky;
+    top: 0;
+    z-index: 100; /* Keeps the nav bar on top when scrolling */
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    transition: color 0.2s ease;
+}
+
+nav a:hover, nav a.active {
+    color: var(--secondary); /* Highlights in Amber on hover/active page */
+}
+        
         /* ==========================================
            MAIN CONTENT & SIDEBAR GRID LAYOUT
            ========================================== */
