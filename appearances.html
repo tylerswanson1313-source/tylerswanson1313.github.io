@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appearances | Tyler Swanson</title>
+    <style>
+        :root {
+            --primary: #1E422E;      /* Deep Crop Green */
+            --secondary: #C48200;    /* Deep Solar Amber */
+            --infrastructure: #3B6285; /* Grid Blue */
+            --dark: #22252A;         /* Slate Tech Carbon */
+            --light: #F7F9F6;        /* Soft Clover Cream */
+            --white: #ffffff;
+            --text: #22252A;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ==========================================
+           HEADER & NAVIGATION STYLING
+           ========================================== */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 35px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #163021;
+            text-align: center;
+            padding: 12px 0;
+            border-bottom: 5px solid var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--secondary);
+        }
+
+        /* ==========================================
+           SEARCH BAR STYLING
+           ========================================== */
+        .search-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            outline: none;
+            transition: box-shadow 0.2s ease;
+            background-color: var(--white);
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(30, 66, 46, 0.2);
+        }
+
+        /* ==========================================
+           APPEARANCES LAYOUT
+           ========================================== */
+        h2 {
+            color: var(--primary);
+            margin: 40px 0 20px 0;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 8px;
+        }
+
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .item-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        /* Category Left Accent Borders */
+        .research-talk { border-left: 5px solid var(--primary); }
+        .guest-lecture { border-left: 5px solid var(--secondary); }
+        .symposium     { border-left: 5px solid var(--infrastructure); }
+
+        .item-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .item-meta {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-research { background-color: #e2f0e8; color: var(--primary); }
+        .badge-lecture  { background-color: #fdf3d8; color: #855800; }
+        .badge-symposium{ background-color: #e3edf5; color: var(--infrastructure); }
+
+        /* Hidden class for search filtering */
+        .hidden { display: none !important; }
+
+        .no-results {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin: 40px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container" style="padding: 0 20px;">
+            <h1>Appearances & Talks</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="publications.html">Publications</a>
+        <a href="appearances.html" class="active">Appearances</a>
+        <a href="the-pond.html">The Pond</a>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Search Input -->
+        <div class="search-container">
+            <input type="text" id="appSearch" class="search-input" placeholder="Search by topic, conference, location, or year...">
+        </div>
+
+        <div id="noResults" class="no-results hidden">No appearances match your search criteria.</div>
+
+        <!-- SECTION 1: Conference & Research Presentations -->
+        <section id="researchSection">
+            <h2>Conference & Research Presentations</h2>
+            <div class="card-list">
+                
+                <div class="item-card research-talk">
+                    <div class="item-title">"Electrocentrism: Re-Thinking The Rural Landscape in An Era of Large-Scale Solar And Data Center Development"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (June 2026). <em>International Association for Society and Natural Resources Annual Conference</em>, Corvallis, OR.
+                    </div>
+                    <span class="badge badge-research">Conference Presentation</span>
+                </div>
+
+                <div class="item-card research-talk">
+                    <div class="item-title">"Your Dollar, My Community: Regulatory Risk and Procedural Justice in Large-Scale Solar Energy Development"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong>, & Bessette, D. (December 2025). <em>Society for Risk Analysis 2025 Annual Meeting</em>, Washington, D.C.
+                    </div>
+                    <span class="badge badge-research">Conference Presentation</span>
+                </div>
+
+                <div class="item-card research-talk">
+                    <div class="item-title">"Beyond Solar Farms: A Case Study of The Development of Jack's Solar Garden"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (March 2025). <em>American Association of Geographers 2025 Annual Meeting</em>.
+                    </div>
+                    <span class="badge badge-research">Conference Presentation</span>
+                </div>
+
+                <div class="item-card research-talk">
+                    <div class="item-title">"Harnessing the Solar Boom: Governance Strategies for Balancing Rural Solar Development"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (June 2024). <em>Agrivoltaics World Conference</em>, Denver, CO.
+                    </div>
+                    <span class="badge badge-research">Conference Presentation</span>
+                </div>
+
+                <div class="item-card research-talk">
+                    <div class="item-title">"Emerging Agrivoltaic Regulatory Systems: An Analysis of Solar Grazing"</div>
+                    <div class="item-meta">
+                        Guarino, J., & <strong>Swanson, T.</strong> (November 2023). <em>American Solar Grazing Association Teatime Webinar</em>.
+                    </div>
+                    <span class="badge badge-research">Virtual Presentation</span>
+                </div>
+
+                <div class="item-card research-talk">
+                    <div class="item-title">"Food, Energy, and Water Resilience Solutions: Agrivoltaics As A Tool for Rural Communities"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (October 2023). <em>Rural Renaissance Roadshow</em>, Bentonville, Arkansas.
+                    </div>
+                    <span class="badge badge-research">Conference Presentation</span>
+                </div>
+
+                <div class="item-card research-talk">
+                    <div class="item-title">"The Economics of Solar Grazing"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong>, & Karhoff, Q. (October 2023). <em>American Solar Grazing Association Teatime Webinar</em>.
+                    </div>
+                    <span class="badge badge-research">Virtual Presentation</span>
+                </div>
+
+                <div class="item-card research-talk">
+                    <div class="item-title">"Emerging Agrivoltaic Regulatory Systems: An Analysis of Solar Grazing"</div>
+                    <div class="item-meta">
+                        Guarino, J., & <strong>Swanson, T.</strong> (March 2023). <em>Solar Farm Summit</em>, Rosemont, IL.
+                    </div>
+                    <span class="badge badge-research">Conference Presentation</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: Guest Lectures -->
+        <section id="lectureSection">
+            <h2>Guest Lectures</h2>
+            <div class="card-list">
+
+                <div class="item-card guest-lecture">
+                    <div class="item-title">"The 5 W's of Agrivoltaics"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (September 2024). <em>University of Arizona</em>, Tucson, AZ.
+                    </div>
+                    <span class="badge badge-lecture">Guest Lecture</span>
+                </div>
+
+                <div class="item-card guest-lecture">
+                    <div class="item-title">"Agrivoltaics and Public Policy"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (October 2023). <em>University of North Carolina Wilmington</em>.
+                    </div>
+                    <span class="badge badge-lecture">Guest Lecture</span>
+                </div>
+
+                <div class="item-card guest-lecture">
+                    <div class="item-title">"The 5 W's of Agrivoltaics"</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (October 2023). <em>University of Arizona</em>, Tucson, AZ.
+                    </div>
+                    <span class="badge badge-lecture">Guest Lecture</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: Symposia & Campus Posters -->
+        <section id="symposiumSection">
+            <h2>Symposia & Campus Posters</h2>
+            <div class="card-list">
+
+                <div class="item-card symposium">
+                    <div class="item-title">Emerging Agrivoltaic Regulatory Systems: An Analysis of Solar Grazing</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong>, & Karhoff, Q. (March 2023). <em>Solar Farm Summit</em>, Rosemont, IL.
+                    </div>
+                    <span class="badge badge-symposium">Symposium</span>
+                </div>
+
+                <div class="item-card symposium">
+                    <div class="item-title">Emerging Agrivoltaic Regulatory Systems: An Analysis of Solar Grazing</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (October 2022). <em>Sustainability Research Symposium</em>, Champaign, IL.
+                    </div>
+                    <span class="badge badge-symposium">Symposium</span>
+                </div>
+
+                <div class="item-card symposium">
+                    <div class="item-title">Optimal Mechanisms of Service Delivery and Utilization for Service Suppliers and Rural-Veteran Consumers</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (August 2022). <em>Community Academic Scholars Poster Session</em>, Champaign, IL.
+                    </div>
+                    <span class="badge badge-symposium">Poster Presentation</span>
+                </div>
+
+                <div class="item-card symposium">
+                    <div class="item-title">Sustainability in Agritourism</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (April 2022). <em>Undergraduate Research Symposium</em>, Champaign, IL.
+                    </div>
+                    <span class="badge badge-symposium">Symposium</span>
+                </div>
+
+                <div class="item-card symposium">
+                    <div class="item-title">Observations on the Success of Utility Green Pricing Programs in Influencing Renewable Energy Generation</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (October 2021). <em>Sustainability Research Symposium</em>, Champaign, IL.
+                    </div>
+                    <span class="badge badge-symposium">Symposium</span>
+                </div>
+
+                <div class="item-card symposium">
+                    <div class="item-title">Should the government subsidize the development of renewable energy or mandate the supply of renewable energy?</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (April 2021). <em>Undergraduate Research Symposium</em>, Champaign, IL.
+                    </div>
+                    <span class="badge badge-symposium">Symposium</span>
+                </div>
+
+                <div class="item-card symposium">
+                    <div class="item-title">Policy insights on electric vehicle subsidies</div>
+                    <div class="item-meta">
+                        <strong>Swanson, T.</strong> (April 2021). <em>Undergraduate Research Symposium</em>, Champaign, IL.
+                    </div>
+                    <span class="badge badge-symposium">Symposium</span>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Tyler Swanson. Hosted freely on GitHub Pages.</p>
+    </footer>
+
+    <!-- JAVASCRIPT LIVE FILTER -->
+    <script>
+        const searchInput = document.getElementById('appSearch');
+        const itemCards = document.querySelectorAll('.item-card');
+        const noResults = document.getElementById('noResults');
+        
+        const sections = [
+            { el: document.getElementById('researchSection'), class: 'research-talk' },
+            { el: document.getElementById('lectureSection'), class: 'guest-lecture' },
+            { el: document.getElementById('symposiumSection'), class: 'symposium' }
+        ];
+
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            let totalVisible = 0;
+
+            sections.forEach(sec => {
+                let sectionVisibleCount = 0;
+                const cardsInSec = sec.el.querySelectorAll('.item-card');
+                
+                cardsInSec.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        card.classList.remove('hidden');
+                        sectionVisibleCount++;
+                        totalVisible++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                if (sectionVisibleCount === 0) {
+                    sec.el.classList.add('hidden');
+                } else {
+                    sec.el.classList.remove('hidden');
+                }
+            });
+
+            if (totalVisible === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
