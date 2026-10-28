@@ -7,7 +7,7 @@
     <style>
         :root {
             --primary: #1E422E;      /* Deep Crop Green */
-            --secondary: #ECD98C;    /* Deep Solar Amber */
+            --secondary: #C48200;    /* Deep Solar Amber */
             --infrastructure: #3B6285; /* Grid Blue */
             --dark: #22252A;         /* Slate Tech Carbon */
             --light: #F7F9F6;        /* Soft Clover Cream */
@@ -22,7 +22,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Aptos', 'Aptos Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text);
             background-color: var(--light);
             line-height: 1.6;
@@ -97,7 +97,7 @@
         }
 
         /* ==========================================
-           PUBLICATIONS LAYOUT
+           PUBLICATIONS LAYOUT & CARD STYLING
            ========================================== */
         h2 {
             color: var(--primary);
@@ -109,7 +109,7 @@
         .pub-list {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
         }
 
         .pub-card {
@@ -120,27 +120,97 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .pub-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        /* Primary color divider between cards */
+        .pub-card:not(:last-child) {
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 35px;
         }
 
-        /* Left border indicator colors */
-        .peer-reviewed {
-            border-left: 5px solid var(--primary);
+        .peer-reviewed { border-left: 5px solid var(--primary); }
+        .non-peer-reviewed { border-left: 5px solid var(--infrastructure); }
+
+        .pub-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 6px;
+            line-height: 1.35;
         }
 
-        .non-peer-reviewed {
-            border-left: 5px solid var(--infrastructure);
-        }
-
-        .citation {
+        .pub-authors {
             font-size: 1.05rem;
-            margin-bottom: 15px;
             color: var(--text);
+            margin-bottom: 4px;
         }
 
-        /* Action Buttons */
+        .pub-venue {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* Expand/Collapse Toggle Button */
+        .btn-toggle {
+            background: none;
+            border: none;
+            color: var(--infrastructure);
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            outline: none;
+        }
+
+        .btn-toggle:hover {
+            text-decoration: underline;
+        }
+
+        /* Collapsible Abstract Panel */
+        .abstract-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+            background-color: var(--light);
+            border-radius: 6px;
+            margin-top: 5px;
+        }
+
+        .abstract-container.open {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .abstract-text h4 {
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .abstract-text p {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* Action Buttons Area */
+        .pub-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
         .btn {
             display: inline-block;
             padding: 8px 16px;
@@ -157,13 +227,20 @@
         }
 
         .btn-visit:hover {
-            background-color: #9c6800; /* Darker amber */
+            background-color: #9c6800;
         }
 
-        /* Hidden class for search filtering */
-        .hidden {
-            display: none !important;
+        .btn-download {
+            background-color: var(--primary);
+            color: var(--white);
         }
+
+        .btn-download:hover {
+            background-color: #163021;
+        }
+
+        /* Search Utilities */
+        .hidden { display: none !important; }
 
         .no-results {
             text-align: center;
@@ -193,6 +270,7 @@
         <a href="index.html">Home</a>
         <a href="publications.html" class="active">Publications</a>
         <a href="appearances.html">Appearances</a>
+        <a href="the-pond.html">The Pond</a>
     </nav>
 
     <div class="container">
@@ -209,92 +287,209 @@
         <section id="peerReviewedSection">
             <h2>Peer-Reviewed Publications</h2>
             <div class="pub-list">
-
-                  
-                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                      Seay-Fleming, C., <strong>Swanson, T.</strong>, Gerlak, A.K. (2026). From scale-neutral to scale-specific: Rethinking agrivoltaics through small farmers' rationalities.. <em>Agriculture and Human Values</em>, 43(3), 118.
-                    </p>
-                    <a href="https://doi.org/10.1007/s10460-026-10925-2" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
-                </div>
                 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Horowitz, D. A., Borgess, P., <strong>Swanson, T.</strong>, Bessette, D.L. (2026). Dataset of Renewable Energy Opposition in the United States. <em>Data</em>, 11(7), 159.
-                    </p>
-                    <a href="https://doi.org/10.3390/data11070159" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
-                </div>
-                
-                <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Pascaris, A. S., <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., McCall, J., Barron-Gafford, G. A., & Macknick, J. (2026). Exploring the effects of policy on stakeholder adoption and deployment of agrivoltaics: A case study of Massachusetts. <em>Energy Policy</em>, 208, 114921.
-                    </p>
-                    <a href="https://doi.org/10.1016/j.enpol.2025.114921" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
-                </div>
-
-                <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        <strong>Swanson, T.</strong>, Gerlak, A., Barron-Gafford, G., & Bellante, L. (2025). Developing crop-based agrivoltaic systems: A case study of Jack's Solar Garden. <em>Journal of Agriculture, Food Systems, and Community Development</em>, 1-18.
-                    </p>
-                    <a href="https://doi.org/10.5304/jafscd.2025.151.010" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                    <div class="pub-title">From scale-neutral to scale-specific: Rethinking agrivoltaics through small farmers' rationalities</div>
+                    <div class="pub-authors">Seay-Fleming, C., <strong>Swanson, T.</strong>, & Gerlak, A. K.</div>
+                    <div class="pub-venue"><em>Agriculture and Human Values</em>, 43(3), 118 (2026)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.1007/s10460-026-10925-2" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Macy, A., <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., & Barron-Gafford, G. A. (2025). Designing for dual-use solar: An examination of the agrivoltaic policy landscape in the United States. <em>Energy Policy</em>, 205, 114682.
-                    </p>
-                    <a href="https://doi.org/10.1016/j.enpol.2025.114682" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                    <div class="pub-title">Dataset of Renewable Energy Opposition Groups in the United States</div>
+                    <div class="pub-authors">Horowitz, D. A., Borgess, P., <strong>Swanson, T.</strong>, & Bessette, D. L.</div>
+                    <div class="pub-venue"><em>Data</em>, 11(7), 159 (2026)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.3390/data11070159" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Seay-Fleming, C., <strong>Swanson, T.</strong>, Gerlak, A. K., Pavao-Zuckerman, M. A., Andrews, H., Moore, K., & Barron-Gafford, G. A. (2025). Cultivating engagement: Public participation in agrivoltaics planning and design. <em>Energy Research & Social Science</em>, 127, 104273.
-                    </p>
-                    <a href="https://doi.org/10.1016/j.erss.2025.104273" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                    <div class="pub-title">Exploring the effects of policy on stakeholder adoption and deployment of agrivoltaics: A case study of Massachusetts</div>
+                    <div class="pub-authors">Pascaris, A. S., <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., McCall, J., Barron-Gafford, G. A., & Macknick, J.</div>
+                    <div class="pub-venue"><em>Energy Policy</em>, 208, 114921 (2026)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>As efforts to develop solar energy increase across the US, so does local opposition in rural communities where residents view solar energy as incompatible with local landscapes and identities. Recognizing the growing public opposition to solar energy resulting from landscape conflicts, many scholars have recommended the adoption of agrivoltaics. This co-utilization practice allows for agricultural and solar energy production to take place on the same plot of land as a solution to improve public support for solar energy development...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.1016/j.enpol.2025.114921" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Seay-Fleming, C., <strong>Swanson, T.</strong>, & Gerlak, A. (2025). For what and for whom? A political ecology of agrivoltaics in the Southwestern United States. <em>Sustainability Science</em>.
-                    </p>
-                    <a href="https://doi.org/10.1007/s11625-025-01653-3" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                    <div class="pub-title">Developing crop-based agrivoltaic systems: A case study of Jack's Solar Garden</div>
+                    <div class="pub-authors"><strong>Swanson, T.</strong>, Gerlak, A., Barron-Gafford, G., & Bellante, L.</div>
+                    <div class="pub-venue"><em>Journal of Agriculture, Food Systems, and Community Development</em>, 1-18 (2025)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.5304/jafscd.2025.151.010" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., & Barron-Gafford, G. A. (2025). "Enough is enough, we like our farms": The role of landscape ideology in shaping perceptions of solar energy and agrivoltaics in the rural American Southwest. <em>Journal of Rural Studies</em>, 114, 103572.
-                    </p>
-                    <a href="https://doi.org/10.1016/j.jrurstud.2025.103572" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                    <div class="pub-title">Designing for dual-use solar: An examination of the agrivoltaic policy landscape in the United States</div>
+                    <div class="pub-authors">Macy, A., <strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., & Barron-Gafford, G. A.</div>
+                    <div class="pub-venue"><em>Energy Policy</em>, 205, 114682 (2025)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.1016/j.enpol.2025.114682" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Karhoff, Q. E., Endres, A. B., Guarino, J. L., & <strong>Swanson, T. J.</strong> (2024). Renewable energy in Illinois: The agrivoltaics contribution. <em>Southern Illinois University Law Review</em>, 48.
-                    </p>
-                    <!-- No link provided in CV; visitors can find via general search -->
-                    <span style="font-size: 0.9rem; color: #777; font-style: italic;">SIU Law Review Edition</span>
+                    <div class="pub-title">Cultivating engagement: Public participation in agrivoltaics planning and design</div>
+                    <div class="pub-authors">Seay-Fleming, C., <strong>Swanson, T.</strong>, Gerlak, A. K., Pavao-Zuckerman, M. A., Andrews, H., Moore, K., & Barron-Gafford, G. A.</div>
+                    <div class="pub-venue"><em>Energy Research & Social Science</em>, 127, 104273 (2025)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.1016/j.erss.2025.104273" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Endres, R., Endres, A. B., Guarino, J., <strong>Swanson, T.</strong>, & Zou, S. (2024). Agritourism liability: Why definition matters from a legal and risk management perspective. <em>Current Issues in Tourism</em>, 1-7.
-                    </p>
-                    <a href="https://doi.org/10.1080/13683500.2024.2378971" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                    <div class="pub-title">For what and for whom? A political ecology of agrivoltaics in the Southwestern United States</div>
+                    <div class="pub-authors">Seay-Fleming, C., <strong>Swanson, T.</strong>, & Gerlak, A.</div>
+                    <div class="pub-venue"><em>Sustainability Science</em> (2025)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.1007/s11625-025-01653-3" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Haemmerli, H. L., Gerlak, A. K., & <strong>Swanson, T.</strong> (2024). Reimagining hydropower in the United States. <em>WIREs Water</em>, 11(5), e1735.
-                    </p>
-                    <a href="https://doi.org/10.1002/wat2.1735" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                    <div class="pub-title">"Enough is enough, we like our farms": The role of landscape ideology in shaping perceptions of solar energy and agrivoltaics in the rural American Southwest</div>
+                    <div class="pub-authors"><strong>Swanson, T.</strong>, Seay-Fleming, C., Gerlak, A. K., & Barron-Gafford, G. A.</div>
+                    <div class="pub-venue"><em>Journal of Rural Studies</em>, 114, 103572 (2025)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.1016/j.jrurstud.2025.103572" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card peer-reviewed">
-                    <p class="citation">
-                        Guarino, J., & <strong>Swanson, T.</strong> (2022). Emerging agrivoltaic regulatory systems, a review of solar grazing. <em>Chicago-Kent Journal of Environmental and Energy Law</em>, 12.
-                    </p>
-                    <!-- Managed without explicit URL in CV -->
-                    <span style="font-size: 0.9rem; color: #777; font-style: italic;">CK Journal of Env & Energy Law</span>
+                    <div class="pub-title">Renewable Energy in Illinois: The Agrivoltaics Contribution</div>
+                    <div class="pub-authors">Karhoff, Q. E., Endres, A. B., Guarino, J. L., & <strong>Swanson, T. J.</strong></div>
+                    <div class="pub-venue"><em>Southern Illinois University Law Review</em>, 48 (2024)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="#" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
+                </div>
+
+                <div class="pub-card peer-reviewed">
+                    <div class="pub-title">Agritourism liability: why definition matters from a legal and risk management perspective</div>
+                    <div class="pub-authors">Endres, R., Endres, A. B., Guarino, J., <strong>Swanson, T.</strong>, & Zou, S.</div>
+                    <div class="pub-venue"><em>Current Issues in Tourism</em>, 1-7 (2024)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.1080/13683500.2024.2378971" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
+                </div>
+
+                <div class="pub-card peer-reviewed">
+                    <div class="pub-title">Reimagining hydropower in the United States</div>
+                    <div class="pub-authors">Haemmerli, H. L., Gerlak, A. K., & <strong>Swanson, T.</strong></div>
+                    <div class="pub-venue"><em>WIREs Water</em>, 11(5), e1735 (2024)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.1002/wat2.1735" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
+                </div>
+
+                <div class="pub-card peer-reviewed">
+                    <div class="pub-title">Emerging Agrivoltaic Regulatory Systems, A Review of Solar Grazing</div>
+                    <div class="pub-authors">Guarino, J., & <strong>Swanson, T.</strong></div>
+                    <div class="pub-venue"><em>Chicago-Kent Journal of Environmental and Energy Law</em>, 12 (2022)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="#" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
             </div>
@@ -306,53 +501,122 @@
             <div class="pub-list">
 
                 <div class="pub-card non-peer-reviewed">
-                    <p class="citation">
-                        <strong>Swanson, T.</strong>, & Gerlak, A. (2024, January 4). As a new farm bill nears, Congress should consider agrivoltaics. <em>Energy Central</em>.
-                    </p>
-                    <a href="https://energycentral.com/c/ec/new-farm-bill-nears-congress-should-consider-agrivoltaics" target="_blank" class="btn btn-visit">Read Article &rarr;</a>
+                    <div class="pub-title">As A New Farm Bill Nears, Congress Should Consider Agrivoltaics</div>
+                    <div class="pub-authors"><strong>Swanson, T.</strong>, & Gerlak, A.</div>
+                    <div class="pub-venue"><em>Energy Central</em> (2024)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://energycentral.com/c/ec/new-farm-bill-nears-congress-should-consider-agrivoltaics" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card non-peer-reviewed">
-                    <p class="citation">
-                        <strong>Swanson, T.</strong>, Karhoff, Q., Guarino, J., & Endres, B. (2023, July 24). Fact sheet: The economics of solar grazing. <em>AgriSolar Clearinghouse</em>.
-                    </p>
-                    <a href="https://www.agrisolarclearinghouse.org/fact-sheet-the-economics-of-solar-grazing/" target="_blank" class="btn btn-visit">Read Fact Sheet &rarr;</a>
+                    <div class="pub-title">Fact Sheet: The Economics of Solar Grazing</div>
+                    <div class="pub-authors"><strong>Swanson, T.</strong>, Karhoff, Q., Guarino, J., & Endres, B.</div>
+                    <div class="pub-venue"><em>AgriSolar Clearinghouse</em> (2023)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://www.agrisolarclearinghouse.org/fact-sheet-the-economics-of-solar-grazing/" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card non-peer-reviewed">
-                    <p class="citation">
-                        <strong>Swanson, T.</strong> (2023, February 23). The rise of agrivoltaics. <em>Q Magazine</em>, 5(2).
-                    </p>
-                    <a href="https://q.sustainability.illinois.edu/the-rise-of-agrivoltaics/" target="_blank" class="btn btn-visit">Read Article &rarr;</a>
+                    <div class="pub-title">The Rise of Agrivoltaics</div>
+                    <div class="pub-authors"><strong>Swanson, T.</strong></div>
+                    <div class="pub-venue"><em>Q Magazine</em>, 5(2) (2023)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://q.sustainability.illinois.edu/the-rise-of-agrivoltaics/" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card non-peer-reviewed">
-                    <p class="citation">
-                        Guarino, J., & <strong>Swanson, T.</strong> (2023, February 1). Agrivoltaics in Illinois: A regulatory and policy guide. <em>AgriSolar Clearinghouse</em>.
-                    </p>
-                    <a href="https://www.agrisolarclearinghouse.org/the-illinois-agrivoltaics-regulatory-and-policy-guide-analyzes-state-and-local-laws/" target="_blank" class="btn btn-visit">Read Guide &rarr;</a>
+                    <div class="pub-title">Agrivoltaics in Illinois: A Regulatory and Policy Guide</div>
+                    <div class="pub-authors">Guarino, J., & <strong>Swanson, T.</strong></div>
+                    <div class="pub-venue"><em>AgriSolar Clearinghouse</em> (2023)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://www.agrisolarclearinghouse.org/the-illinois-agrivoltaics-regulatory-and-policy-guide-analyzes-state-and-local-laws/" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card non-peer-reviewed">
-                    <p class="citation">
-                        <strong>Swanson, T.</strong> (2022, February 23). Crypto's dark secret. <em>Q Magazine</em>, 4(2).
-                    </p>
-                    <a href="https://q.sustainability.illinois.edu/cryptos-dark-secret/" target="_blank" class="btn btn-visit">Read Article &rarr;</a>
+                    <div class="pub-title">Crypto's Dark Secret</div>
+                    <div class="pub-authors"><strong>Swanson, T.</strong></div>
+                    <div class="pub-venue"><em>Q Magazine</em>, 4(2) (2022)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="https://q.sustainability.illinois.edu/cryptos-dark-secret/" target="_blank" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card non-peer-reviewed">
-                    <p class="citation">
-                        Guarino, J., Endres, R., <strong>Swanson, T.</strong>, & Endres, B. (2022, February 14). Defining the bounds of booming agritourism. <em>farmdoc daily</em>, 12(19).
-                    </p>
-                    <!-- farmdoc daily entry -->
-                    <span style="font-size: 0.9rem; color: #777; font-style: italic;">University of Illinois UIUC</span>
+                    <div class="pub-title">Defining the Bounds of Booming Agritourism</div>
+                    <div class="pub-authors">Guarino, J., Endres, R., <strong>Swanson, T.</strong>, & Endres, B.</div>
+                    <div class="pub-venue"><em>farmdoc daily</em>, 12(19), Department of Agricultural and Consumer Economics, UIUC (2022)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="#" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
                 <div class="pub-card non-peer-reviewed">
-                    <p class="citation">
-                        Guarino, J., Endres, R., <strong>Swanson, T.</strong>, & Endres, B. (2021, November 4). It's pumpkin patch season and agritourism is booming—but what exactly is agritourism? <em>farmdoc daily</em>, 11(152).
-                    </p>
-                    <span style="font-size: 0.9rem; color: #777; font-style: italic;">University of Illinois UIUC</span>
+                    <div class="pub-title">It's Pumpkin Patch Season and Agritourism is Booming-But What Exactly is Agritourism?</div>
+                    <div class="pub-authors">Guarino, J., Endres, R., <strong>Swanson, T.</strong>, & Endres, B.</div>
+                    <div class="pub-venue"><em>farmdoc daily</em>, 11(152), Department of Agricultural and Consumer Economics, UIUC (2021)</div>
+                    <button class="btn-toggle" onclick="toggleAbstract(this)"><span>▶ Click to Expand Abstract</span></button>
+                    <div class="abstract-container">
+                        <div class="abstract-text">
+                            <h4>Abstract</h4>
+                            <p>Abstract details coming soon...</p>
+                        </div>
+                    </div>
+                    <div class="pub-actions">
+                        <a href="#" class="btn btn-visit">Visit Article &rarr;</a>
+                        <a href="#" class="btn btn-download">Download PDF 📄</a>
+                    </div>
                 </div>
 
             </div>
@@ -364,10 +628,21 @@
         <p>&copy; 2026 Tyler Swanson. Hosted freely on GitHub Pages.</p>
     </footer>
 
-    <!-- ==========================================
-         JAVASCRIPT SEARCH FILTER
-         ========================================== -->
+    <!-- JAVASCRIPT FOR ABSTRACT TOGGLE & SEARCH FILTER -->
     <script>
+        function toggleAbstract(btn) {
+            const container = btn.nextElementSibling;
+            const label = btn.querySelector('span');
+            
+            if (container.classList.contains('open')) {
+                container.classList.remove('open');
+                label.textContent = '▶ Click to Expand Abstract';
+            } else {
+                container.classList.add('open');
+                label.textContent = '▼ Collapse Abstract';
+            }
+        }
+
         const searchInput = document.getElementById('pubSearch');
         const pubCards = document.querySelectorAll('.pub-card');
         const noResults = document.getElementById('noResults');
@@ -393,7 +668,6 @@
                 }
             });
 
-            // Toggle category headers based on visibility
             if (visiblePeerCount === 0) {
                 peerSection.classList.add('hidden');
             } else {
@@ -406,7 +680,6 @@
                 nonPeerSection.classList.remove('hidden');
             }
 
-            // Show 'No Results' message if everything is hidden
             if (visiblePeerCount === 0 && visibleNonPeerCount === 0) {
                 noResults.classList.remove('hidden');
             } else {
